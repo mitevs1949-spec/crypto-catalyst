@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Profit Calculator | Crypto Catalyst</title>
+
+    <!-- 🔍 ADVANCED SEO & GEO-TARGETING -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Sproutern Media Group">
+    <link rel="alternate" href="https://crypto-catalyst.sproutern.com/" hreflang="x-default" />
+    <link rel="alternate" href="https://crypto-catalyst.sproutern.com/?geo=us" hreflang="en-US" />
+    <link rel="alternate" href="https://crypto-catalyst.sproutern.com/?geo=uk" hreflang="en-GB" />
+    <link rel="alternate" href="https://crypto-catalyst.sproutern.com/?geo=in" hreflang="en-IN" />
+    <link rel="alternate" href="https://crypto-catalyst.sproutern.com/?geo=eu" hreflang="en-EU" />
+    
+    <!-- 📱 OpenGraph (Social Sharing) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Crypto Catalyst">
+    <meta property="og:title" content="Crypto Catalyst | Professional DeFi & Web3 Finance Intelligence">
+    <meta property="og:description" content="Access the world's most advanced automated research node for DeFi & Web3 Finance. Part of the Sproutern Empire.">
+    <meta property="og:url" content="https://crypto-catalyst.sproutern.com/">
+    <meta property="og:image" content="https://crypto-catalyst.sproutern.com/posts/guide-hero.jpg">
+    
+    <!-- 🐦 Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crypto Catalyst: The Future of DeFi & Web3 Finance">
+    <meta name="twitter:description" content="Deploying strategic intelligence for the 2026 digital era.">
+
+    <!-- 📊 JSON-LD Structured Data (Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Crypto Catalyst",
+      "url": "https://crypto-catalyst.sproutern.com/",
+      "logo": "https://crypto-catalyst.sproutern.com/favicon.ico",
+      "sameAs": ["https://twitter.com/sproutern", "https://linkedin.com/company/sproutern"],
+      "description": "Professional intelligence node for DeFi & Web3 Finance"
+    }
+    </script>
+    
+    <meta name="description" content="Calculate your crypto trading profits, ROI, and break-even points instantly.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffae00; --bg: #050507; --surface: rgba(255, 255, 255, 0.05); --text: #f0f0f0; }
+        body { background: radial-gradient(circle at top, #ffae0022, transparent 40%), #050507; color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        
+        .container { max-width: 600px; width: 100%; background: var(--surface); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        
+        h1 { font-family: 'Space Grotesk', sans-serif; color: var(--primary); text-align: center; margin-bottom: 30px; }
+        
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #aaa; }
+        input { width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: #fff; border-radius: 10px; font-size: 1.1rem; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 15px #ffae0033; }
+        
+        .results { margin-top: 40px; border-top: 1px solid #333; padding-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .result-box { text-align: center; background: rgba(255,174,0,0.1); padding: 20px; border-radius: 10px; border: 1px solid #ffae0033; }
+        .result-box span { display: block; font-size: 0.9rem; color: #ccc; margin-bottom: 5px; }
+        .result-box strong { display: block; font-size: 1.5rem; color: #fff; font-family: 'Space Grotesk', sans-serif; }
+        .profit strong { color: #00ff88; }
+        .loss strong { color: #ff4444; }
+        
+        .btn-back { display: block; text-align: center; margin-top: 30px; color: #888; text-decoration: none; }
+        .btn-back:hover { color: #fff; }
+    </style>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Crypto Profit Calculator</h1>
+        
+        <div class="input-group">
+            <label>Investment Amount ($)</label>
+            <input type="number" id="investment" placeholder="1000" oninput="calculate()">
+        </div>
+        
+        <div class="input-group">
+            <label>Buy Price ($)</label>
+            <input type="number" id="buyPrice" placeholder="50000" oninput="calculate()">
+        </div>
+        
+        <div class="input-group">
+            <label>Sell Price ($)</label>
+            <input type="number" id="sellPrice" placeholder="60000" oninput="calculate()">
+        </div>
+        
+        <div class="input-group">
+            <label>Fees (%)</label>
+            <input type="number" id="fees" value="0.1" oninput="calculate()">
+        </div>
+
+        <div class="results">
+            <div class="result-box profit" id="profitBox">
+                <span>Total Profit</span>
+                <strong id="profitDisplay">$0.00</strong>
+            </div>
+            <div class="result-box">
+                <span>Total ROI</span>
+                <strong id="roiDisplay">0%</strong>
+            </div>
+        </div>
+        
+        <a href="index.html" class="btn-back">← Back to Crypto Catalyst</a>
+    </div>
+
+    <script>
+        function calculate() {
+            const investment = parseFloat(document.getElementById('investment').value) || 0;
+            const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
+            const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
+            const fees = parseFloat(document.getElementById('fees').value) || 0;
+
+            if (buyPrice > 0 && sellPrice > 0) {
+                const amount = investment / buyPrice;
+                const grossReturn = amount * sellPrice;
+                const totalFees = (investment * (fees/100)) + (grossReturn * (fees/100));
+                const profit = grossReturn - investment - totalFees;
+                const roi = (profit / investment) * 100;
+
+                document.getElementById('profitDisplay').innerText = '$' + profit.toFixed(2);
+                document.getElementById('roiDisplay').innerText = roi.toFixed(2) + '%';
+                
+                const box = document.getElementById('profitBox');
+                if (profit >= 0) {
+                    box.className = 'result-box profit';
+                    box.querySelector('strong').style.color = '#00ff88';
+                } else {
+                    box.className = 'result-box loss';
+                    box.querySelector('strong').style.color = '#ff4444';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
